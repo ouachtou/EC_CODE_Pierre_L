@@ -38,13 +38,11 @@ class HomeController extends AbstractController
         $form->handleRequest($request);
         
         if ($form->isSubmitted() && $form->isValid()) {
-            if ($bookRead->isRead() === null) {
-                $bookRead->setIsRead(false);
-            }
+            $bookRead->setIsRead($form->get('is_read')->getData());
             $bookRead->setRating($form->get('rating')->getData());
             $bookRead->setDescription($form->get('description')->getData());
-            $bookRead->setUserId($userId);
             $bookRead->setBookId($form->get('book_id')->getData());
+            $bookRead->setUserId($userId);
             $bookRead->setCreatedAt(new \DateTime());
             $bookRead->setUpdatedAt(new \DateTime());
             $entityManager->persist($bookRead);

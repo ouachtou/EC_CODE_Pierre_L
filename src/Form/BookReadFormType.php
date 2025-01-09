@@ -34,7 +34,7 @@ class BookReadFormType extends AbstractType
                 '5' => 5,
             ]])
             ->add('description', TextType::class)
-            ->add('is_read', CheckboxType::class)
+            ->add('is_read', CheckboxType::class, ['required' => false])
         ;
     }
 
