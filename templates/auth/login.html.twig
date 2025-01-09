@@ -39,6 +39,9 @@
                             </i>
                         </button>
                     </div>
+                    {% if error %}
+                        <span class="text-danger">Le nom d'utilisateur ou le mot de passe est incorrect.</span>
+                    {% endif %}
                 </div>
                 <button type="submit" class="btn btn-primary flex justify-center grow">Connexion</button>
             </form>

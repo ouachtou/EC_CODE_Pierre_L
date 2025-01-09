@@ -5,6 +5,9 @@
 {% endblock %}
 
 {% block body %}
+    {% if user %}
+    <span>Bonjour {{ user.email }}</span>
+    {% endif %}
     <div class="grid gap-5 lg:gap-7.5">
         <!-- begin: grid -->
         <div class="grid lg:grid-cols-5 gap-5 lg:gap-7.5 items-stretch">
