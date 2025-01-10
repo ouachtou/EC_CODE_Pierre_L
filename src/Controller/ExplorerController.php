@@ -20,9 +20,11 @@ class ExplorerController extends AbstractController
     public function index(): Response
     {
         $booksRead = $this->bookReadRepository->findAll();
+        $user = $this->getUser();
 
         return $this->render('pages/explorer.html.twig', [
             'booksRead' => $booksRead,
+            'user' => $user,
         ]);
     }
 }
