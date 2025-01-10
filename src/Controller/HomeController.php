@@ -41,10 +41,10 @@ class HomeController extends AbstractController
         $form = $this->createForm(BookReadFormType::class);
         $form->handleRequest($request);
         
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->handleBookReadForm($form, $bookRead, $userId, $entityManager);
-            $form = $this->createForm(BookReadFormType::class); // Reset form after submission
-        }
+        // if ($form->isSubmitted() && $form->isValid()) {
+        //     $this->handleBookReadForm($form, $bookRead, $userId, $entityManager);
+        //     $form = $this->createForm(BookReadFormType::class); // Reset form after submission
+        // }
 
         return $this->render('pages/home.html.twig', [
             'booksRead' => $booksRead,
@@ -55,20 +55,29 @@ class HomeController extends AbstractController
         ]);
     }
 
-
-    // Helper method to handle BookRead form submission
-    private function handleBookReadForm($form, BookRead $bookRead, int $userId, EntityManagerInterface $entityManager): void
+    #[Route('/book/add', name: 'app.book.add', methods: ['POST'])]
+    public function addBook(Request $request, EntityManagerInterface $entityManager): Response
     {
-        $bookRead->setIsRead($form->get('is_read')->getData());
-        $bookRead->setRating($form->get('rating')->getData());
-        $bookRead->setDescription($form->get('description')->getData());
-        $bookRead->setBookId($form->get('book_id')->getData());
-        $bookRead->setUserId($userId);
+        // Récupération des données du formulaire
+        $data = json_decode($request->getContent(), true);
+
+        // Get Book entity instead of just the ID
+        $book = $this->bookRepository->find($data['book_read_form[book_id]']);
+        
+        $bookRead = new BookRead();
+        $bookRead->setBookId($book);
+        $bookRead->setDescription($data['book_read_form[description]']);
+        $bookRead->setRating($data['book_read_form[rating]']);
+        $bookRead->setIsRead($data['book_read_form[is_read]'] ?? false);
+        $bookRead->setUserId($this->getUser()->getId());
         $bookRead->setCreatedAt(new \DateTime());
         $bookRead->setUpdatedAt(new \DateTime());
 
         $entityManager->persist($bookRead);
         $entityManager->flush();
+
+        return $this->json($bookRead);
     }
 }
+
 
