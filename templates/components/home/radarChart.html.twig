@@ -16,12 +16,19 @@
             chart: {
                 width: 500,
                 height: 500,
-                type: 'radar'
+                type: 'radar',
+                toolbar: {
+                    show: false
+                }
             },
             series: [
                 {
                     name: "Nombre de lectures",
                     data: [{% for key,value in categoryData %} '{{ value }}', {% endfor %}],
+                    marker: {
+                        size: 6,
+                        colors: ["#007bff"]
+                    }
                 },
             ],
             xaxis: {
@@ -29,16 +36,38 @@
                 labels: {
                     show: true,
                     style: {
-                        colors: ["#a8a8a8"],
-                        fontSize: "11px",
-                        fontFamily: 'Arial',
+                        colors: ["#4B5154"],
+                        fontSize: "12px",
+                        fontFamily: 'Helvetica',
+                        fontWeight: 'bold'
+                    }
+                }
+            },
+            yaxis: {
+                show: true,
+                labels: {
+                    show: true,
+                    style: {
+                        colors: ["#4B5154"],
+                        fontSize: "12px",
+                        fontFamily: 'Helvetica',
+                        fontWeight: 'bold'
                     }
                 }
             },
             fill: {
                 opacity: 0.5,
-                colors: ["cyan"]
+                colors: ["#007bff"]
             },
+            plotOptions: {
+                radar: {
+                    polygons: {
+                        strokeColors: "#e8e8e8",
+                        connectorColors: "#e8e8e8"
+                    }
+                }
+            },
+            colors: ["#007bff"]
         };
         var chart = new ApexCharts(document.querySelector("#chart"), options);
         chart.render();
