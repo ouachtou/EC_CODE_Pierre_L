@@ -1,12 +1,75 @@
-<div class="card h-full">
-    <div class="card-header">
-        <h3 class="card-title">
-            Répartition de mes lectures
-        </h3>
+{% block body %}
+    <div class="card h-full">
+        <div class="card-header">
+            <h3 class="card-title">
+                Répartition de mes lectures
+            </h3>
+        </div>
+        <div class="card-body flex flex-col gap-5">
+            <figure id="chart">
+            </figure>
+        </div>
     </div>
-    <div class="card-body flex flex-col gap-5">
-        <figure>
-            <img src="{{  asset('media/charts/Radar_Sample.png') }}" alt="Radar Sample"/>
-        </figure>
-    </div>
-</div>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script>
+        var options = {
+            chart: {
+                width: 500,
+                height: 500,
+                type: 'radar',
+                toolbar: {
+                    show: false
+                }
+            },
+            series: [
+                {
+                    name: "Nombre de lectures",
+                    data: [{% for key,value in categoryData %} '{{ value }}', {% endfor %}],
+                    marker: {
+                        size: 6,
+                        colors: ["#007bff"]
+                    }
+                },
+            ],
+            xaxis: {
+                categories: [{% for key,value in categoryLabels %} '{{ value }}', {% endfor %}],
+                labels: {
+                    show: true,
+                    style: {
+                        colors: ["#4B5154"],
+                        fontSize: "12px",
+                        fontFamily: 'Helvetica',
+                        fontWeight: 'bold'
+                    }
+                }
+            },
+            yaxis: {
+                show: true,
+                labels: {
+                    show: true,
+                    style: {
+                        colors: ["#4B5154"],
+                        fontSize: "12px",
+                        fontFamily: 'Helvetica',
+                        fontWeight: 'bold'
+                    }
+                }
+            },
+            fill: {
+                opacity: 0.5,
+                colors: ["#007bff"]
+            },
+            plotOptions: {
+                radar: {
+                    polygons: {
+                        strokeColors: "#e8e8e8",
+                        connectorColors: "#e8e8e8"
+                    }
+                }
+            },
+            colors: ["#007bff"]
+        };
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+    </script>
+{% endblock %}
