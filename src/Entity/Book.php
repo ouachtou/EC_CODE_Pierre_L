@@ -36,6 +36,9 @@ class Book
     #[ORM\Column]
     private ?\DateTime $updated_at = null;
 
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $cover = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -121,6 +124,18 @@ class Book
     public function setUpdatedAt(\DateTime $updated_at): static
     {
         $this->updated_at = $updated_at;
+
+        return $this;
+    }
+
+    public function getCover(): ?string
+    {
+        return $this->cover;
+    }
+
+    public function setCover(string $cover): static
+    {
+        $this->cover = $cover;
 
         return $this;
     }
