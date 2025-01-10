@@ -6,7 +6,7 @@
         <div class="modal-body p-0 pb-5">
             <div class="scrollable-y-auto" data-scrollable="true" data-scrollable-max-height="auto"
                  data-scrollable-offset="300px">
-                {{ form_start(bookReadForm) }}
+                {{ form_start(bookReadForm, { 'attr': { 'id': 'book_read_form' } }) }}
                     <div class="flex flex-col gap-5 p-5">
                         <div class="flex flex-col gap-1">
                             <label for="book" class="form-label font-normal text-gray-900">Livre</label>
@@ -41,3 +41,5 @@
         </div>
     </div>
 </div>
+
+<script src="{{ asset('js/book.js') }}"></script>
