@@ -5,33 +5,33 @@
 {% block body %}
 <div class="container mx-auto my-6">
     <div class="flex justify-between items-center mb-4">
-        <h3 class="text-xl font-semibold">Les Lectures</h3>
+        <h3 class="text-xl font-semibold">Les Lectures</h3> <!-- Titre de la section -->
         <div class="relative">
             <input 
                 data-datatable-search="#read-books-table" 
                 placeholder="Rechercher" 
                 type="text" 
-                class="border rounded-lg py-2 px-3 text-sm w-64 focus:ring focus:ring-primary focus:outline-none" />
+                class="border rounded-lg py-2 px-3 text-sm w-64 focus:ring focus:ring-primary focus:outline-none" /> <!-- Champ de recherche -->
         </div>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {% for bookRead in booksRead %}
+        {% for bookRead in booksRead %} <!-- Boucle sur les lectures -->
         <div class="bg-white border rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow duration-200">
-            <h4 class="text-lg font-semibold mb-2">{{ bookRead.bookId.name }}</h4>
+            <h4 class="text-lg font-semibold mb-2">{{ bookRead.bookId.name }}</h4> <!-- Nom du livre -->
             <p class="text-sm text-gray-600 mb-4">
-                <span class="font-medium">{{ bookRead.bookId.categoryId.name }}</span>
+                <span class="font-medium">{{ bookRead.bookId.categoryId.name }}</span> <!-- Catégorie du livre -->
             </p>
             <p class="text-sm text-gray-700 truncate mb-4">
-                {{ bookRead.description|raw }}
+                {{ bookRead.description|raw }} <!-- Description du livre -->
             </p>
             <div class="flex justify-between items-center">
                 <div class="flex space-x-1 text-yellow-400">
-                    {% for i in 1..5 %}
+                    {% for i in 1..5 %} <!-- Affichage des étoiles -->
                         <i class="{% if i <= bookRead.rating %}rating-on ki-solid ki-star text-base leading-none{% else %}rating-off ki-outline ki-star text-base leading-none{% endif %}"></i>
                     {% endfor %}
                 </div>
                 <div class="text-sm text-gray-500">
-                    ❤️ {{ bookRead.likes|default(0) }}
+                    ❤️ {{ bookRead.likes|default(0) }} <!-- Affichage des likes (ce n'est pas fonctionnel) -->
                 </div>
             </div>
         </div>

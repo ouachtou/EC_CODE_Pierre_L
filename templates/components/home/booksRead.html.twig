@@ -1,12 +1,15 @@
+
+### `templates/components/home/booksRead.html.twig`
+```twig
 <div class="card card-grid h-full min-w-full">
     <div class="card-header">
         <h3 class="card-title">
-            Mes lectures terminées
+            Mes lectures terminées <!-- Titre de la section -->
         </h3>
         <div class="input input-sm max-w-48">
             <i class="ki-filled ki-magnifier">
             </i>
-            <input data-datatable-search="#read-books-table" placeholder="Rechercher" type="text"/>
+            <input data-datatable-search="#read-books-table" placeholder="Rechercher" type="text"/> <!-- Champ de recherche -->
         </div>
     </div>
     <div class="card-body">
@@ -17,43 +20,43 @@
                     <tr>
                         <th class="min-w-[280px]">
                             <span class="sort asc">
-                                <span class="sort-label">Livre</span>
+                                <span class="sort-label">Livre</span> <!-- Titre de la colonne -->
                                 <span class="sort-icon"></span>
                             </span>
                         </th>
                         <th class="min-w-[135px]">
                             <span class="sort asc">
-                                <span class="sort-label">Catégorie</span>
+                                <span class="sort-label">Catégorie</span> <!-- Titre de la colonne -->
                                 <span class="sort-icon"></span>
                             </span>
                         </th>
                         <th class="min-w-[135px]">
                             <span class="sort asc">
-                                <span class="sort-label">Note</span>
+                                <span class="sort-label">Note</span> <!-- Titre de la colonne -->
                                 <span class="sort-icon"></span>
                             </span>
                         </th>
                     </tr>
                     </thead>
                     <tbody>
-                    {% for bookRead in booksRead %}
+                    {% for bookRead in booksRead %} <!-- Boucle sur les lectures terminées -->
                     <tr>
                         <td>
                             <div class="flex flex-col gap-2">
                                 <a class="leading-none font-medium text-sm text-gray-900 hover:text-primary"
                                    href="#" data-modal-toggle="#book_modal" 
                                    onclick="openBookModal('{{ bookRead.bookId.id }}', '{{ bookRead.description|e('js') }}', '{{ bookRead.rating|round }}', '{{ bookRead.isRead ? 'checked' : '' }}', '{{ bookRead.id }}', 'checked')">
-                                    {{ bookRead.bookId.name }}
+                                    {{ bookRead.bookId.name }} <!-- Nom du livre -->
                                 </a>
                                 <span class="text-2sm text-gray-700 font-normal leading-3">
-                                    {{ bookRead.description|raw }}
+                                    {{ bookRead.description|raw }} <!-- Description du livre -->
                                 </span>
                             </div>
                         </td>
-                        <td>{{ bookRead.bookId.categoryId.name }}</td>
+                        <td>{{ bookRead.bookId.categoryId.name }}</td> <!-- Catégorie du livre -->
                         <td>
                             <div class="rating">
-                                {% for i in range(1, bookRead.rating) %}
+                                {% for i in range(1, bookRead.rating) %} <!-- Affichage des étoiles -->
                                 <div class="rating-label checked">
                                     <i class="rating-on ki-solid ki-star text-base leading-none"></i>
                                 </div>
@@ -69,13 +72,13 @@
                 <div class="flex items-center gap-2 order-2 md:order-1">
                     Show
                     <select class="select select-sm w-16"
-                            data-datatable-size="true" name="perpage">
+                            data-datatable-size="true" name="perpage"> <!-- Sélecteur pour le nombre d'éléments par page -->
                     </select>
                     per page
                 </div>
                 <div class="flex items-center gap-4 order-1 md:order-2">
                     <span data-datatable-info="true"></span>
-                    <div class="pagination" data-datatable-pagination="true">
+                    <div class="pagination" data-datatable-pagination="true"> <!-- Pagination -->
                     </div>
                 </div>
             </div>
@@ -83,4 +86,5 @@
     </div>
 </div>
 
-<script src="{{ asset('js/fromBook.js') }}"></script>
+<script src="{{ asset('js/fromBook.js') }}"></script> <!-- Inclusion du script JS -->
+```

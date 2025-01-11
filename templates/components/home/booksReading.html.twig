@@ -1,12 +1,12 @@
 <div class="card card-grid h-full min-w-full">
     <div class="card-header">
         <h3 class="card-title">
-            Mes lectures en cours
+            Mes lectures en cours <!-- Titre de la section -->
         </h3>
         <div class="input input-sm max-w-48">
             <i class="ki-filled ki-magnifier">
             </i>
-            <input data-datatable-search="#current-books-table" placeholder="Rechercher" type="text"/>
+            <input data-datatable-search="#current-books-table" placeholder="Rechercher" type="text"/> <!-- Champ de recherche -->
         </div>
     </div>
     <div class="card-body">
@@ -17,35 +17,35 @@
                     <tr>
                         <th class="min-w-[280px]">
                             <span class="sort asc">
-                                <span class="sort-label">Livre</span>
+                                <span class="sort-label">Livre</span> <!-- Titre de la colonne -->
                                 <span class="sort-icon"></span>
                             </span>
                         </th>
                         <th class="max-w-[135px] text-end">
                             <span class="sort">
-                                <span class="sort-label">Modifié le</span>
+                                <span class="sort-label">Modifié le</span> <!-- Titre de la colonne -->
                                 <span class="sort-icon"></span>
                             </span>
                         </th>
                     </tr>
                     </thead>
                     <tbody>
-                    {% for bookRead in booksReading %}
+                    {% for bookRead in booksReading %} <!-- Boucle sur les lectures en cours -->
                         <tr>
                             <td>
                                 <div class="flex flex-col gap-2">
                                     <a class="leading-none font-medium text-sm text-gray-900 hover:text-primary"
                                     href="#" data-modal-toggle="#book_modal" 
                                     onclick="openBookModal('{{ bookRead.bookId.id }}', '{{ bookRead.description|e('js') }}', '{{ bookRead.rating|round }}', '{{ bookRead.isRead ? 'checked' : '' }}', '{{ bookRead.id }}')">
-                                         {{ bookRead.bookId.name }}
+                                         {{ bookRead.bookId.name }} <!-- Nom du livre -->
                                     </a>
                                     <span class="text-2sm text-gray-700 font-normal leading-3">
-                                    {{ bookRead.description|raw }}
+                                    {{ bookRead.description|raw }} <!-- Description du livre -->
                                 </span>
                                 </div>
                             </td>
                             <td class="text-end">
-                                {{ bookRead.updatedAt|date('d/m/Y à H:i') }}
+                                {{ bookRead.updatedAt|date('d/m/Y à H:i') }} <!-- Date de mise à jour -->
                             </td>
                         </tr>
                     {% endfor %}
@@ -55,11 +55,11 @@
             <div class="card-footer justify-center md:justify-between flex-col md:flex-row gap-5 text-gray-600 text-2sm font-medium">
                 <div class="flex items-center gap-4 order-1 md:order-2">
                     <span data-datatable-info="true"></span>
-                    <div class="pagination" data-datatable-pagination="true"></div>
+                    <div class="pagination" data-datatable-pagination="true"></div> <!-- Pagination -->
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<script src="{{ asset('js/fromBook.js') }}"></script>
+<script src="{{ asset('js/fromBook.js') }}"></script> <!-- Inclusion du script JS -->

@@ -1,45 +1,45 @@
 <div class="modal" data-modal="true" id="book_modal">
     <div class="modal-content max-w-[600px] top-[15%]">
         <div class="modal-header py-4 px-5">
-            <h3 class="modal-title">Ma lecture</h3>
+            <h3 class="modal-title">Ma lecture</h3> <!-- Titre de la modal -->
         </div>
         <div class="modal-body p-0 pb-5">
             <div class="scrollable-y-auto" data-scrollable="true" data-scrollable-max-height="auto"
                  data-scrollable-offset="300px">
-                {{ form_start(bookReadForm, { 'attr': { 'id': 'book_read_form' } }) }}
+                {{ form_start(bookReadForm, { 'attr': { 'id': 'book_read_form' } }) }} <!-- Début du formulaire -->
                     <div class="flex flex-col gap-5 p-5">
                         <div class="flex flex-col gap-1">
                             <label for="book" class="form-label font-normal text-gray-900">Livre</label>
-                            {{ form_widget(bookReadForm.book_id, { 'attr': { 'class': 'select' } }) }}
+                            {{ form_widget(bookReadForm.book_id, { 'attr': { 'class': 'select' } }) }} <!-- Sélecteur pour le livre -->
                         </div>
 
                         <div class="flex flex-col gap-1">
                             <label class="form-label font-normal text-gray-900">Mes notes</label>
                             <div class="flex flex-col w-full gap-1">
-                            {{ form_widget(bookReadForm.description, { 'attr': { 'class': 'textarea' } }) }}
+                            {{ form_widget(bookReadForm.description, { 'attr': { 'class': 'textarea' } }) }} <!-- Champ pour la description -->
                             </div>
                         </div>
 
                         <div class="flex flex-col gap-1">
                             <label for="book" class="form-label font-normal text-gray-900">Note</label>
-                            {{ form_widget(bookReadForm.rating, { 'attr': { 'class': 'select' } }) }}
+                            {{ form_widget(bookReadForm.rating, { 'attr': { 'class': 'select' } }) }} <!-- Sélecteur pour la note -->
                         </div>
 
                         <div class="flex flex-col gap-1">
                             <label class="switch">
                                 <span class="switch-label font-normal text-gray-900">Lecture terminée</span>
-                                {{ form_widget(bookReadForm.is_read, { 'attr': { 'class': 'checkbox' } }) }}
+                                {{ form_widget(bookReadForm.is_read, { 'attr': { 'class': 'checkbox' } }) }} <!-- Case à cocher pour lecture terminée -->
                             </label>
                         </div>
 
                         <div class="flex">
-                            <button type="submit" class="btn btn-primary">Enregistrer</button>
+                            <button type="submit" class="btn btn-primary">Enregistrer</button> <!-- Bouton pour soumettre le formulaire -->
                         </div>
                     </div>
-                {{ form_end(bookReadForm) }}
+                {{ form_end(bookReadForm) }} <!-- Fin du formulaire -->
             </div>
         </div>
     </div>
 </div>
 
-<script src="{{ asset('js/book.js') }}"></script>
+<script src="{{ asset('js/book.js') }}"></script> <!-- Inclusion du script JS -->
