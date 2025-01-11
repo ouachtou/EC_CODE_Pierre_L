@@ -30,7 +30,7 @@
                                 </p>
                             </div>
                             <div class="flex justify-center">
-                                <a class="btn btn-dark" href="#" data-modal-toggle="#book_modal" onclick="openBookModal(1, '', 1, 'unchecked', 'unchecked')">
+                                <a class="btn btn-dark" href="#" data-modal-toggle="#book_modal" onclick="openBookModal(1, '', 1, 'unchecked', null)">
                                     Ajouter une lecture
                                 </a>
                             </div>
@@ -56,7 +56,7 @@
         </div>
         <!-- end: grid -->
     </div>
+    <script src="{{ asset('js/fromBook.js') }}"></script>
     {% include 'modals/search.html.twig' %}
     {% include 'modals/book.html.twig' %}
-    <script src="{{ asset('js/fromBook.js') }}"></script>
 {% endblock %}

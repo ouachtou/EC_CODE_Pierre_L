@@ -19,6 +19,7 @@ class BookReadFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+            ->add('id', HiddenType::class, ['required' => false])
             ->add('book_id', EntityType::class, [
                 'required' => true,
                 'class' => Book::class,
@@ -37,7 +38,6 @@ class BookReadFormType extends AbstractType
             ]])
             ->add('description', TextType::class)
             ->add('is_read', CheckboxType::class, ['required' => false])
-            ->add('bEditing', HiddenType::class, ['required' => false])
         ;
     }
 
