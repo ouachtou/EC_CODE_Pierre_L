@@ -43,6 +43,7 @@ class BookController extends AbstractController
      * 
      * @return Response La réponse JSON contenant les informations du livre ajouté.
      */
+    #[Route("/book/add", name: 'app.book.add', methods: ['POST'])]
     public function addBook(Request $request, EntityManagerInterface $entityManager): Response
     {
         $data = json_decode($request->getContent(), true);
@@ -78,6 +79,7 @@ class BookController extends AbstractController
      * 
      * @return Response La réponse JSON contenant les informations mises à jour du livre.
      */
+    #[Route("/book/update", name: 'app.book.update', methods: ['PUT'])]
     public function updateBook(Request $request, EntityManagerInterface $entityManager): Response
     {
         $data = json_decode($request->getContent(), true);

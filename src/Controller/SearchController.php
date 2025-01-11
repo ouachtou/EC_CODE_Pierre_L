@@ -37,6 +37,7 @@ class SearchController extends AbstractController {
      * @param Request $request La requête HTTP contenant la chaîne de recherche.
      * @return JsonResponse Les résultats de la recherche formatés en JSON.
      */
+    #[Route("/search", name: 'app.search')]
     public function search(Request $request): JsonResponse
     {
         $query = $request->query->get('query');

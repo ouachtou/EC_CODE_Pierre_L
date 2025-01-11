@@ -27,6 +27,7 @@ class RegisterController extends AbstractController
      * 
      * @return Response                        La réponse contenant soit le formulaire, soit la redirection après l'enregistrement.
      */
+    #[Route("/register", name: 'auth.register')]
     public function register(Request $request, EntityManagerInterface $entityManager, UserPasswordHasherInterface $passwordHasher): Response
     {
         $user = new User();

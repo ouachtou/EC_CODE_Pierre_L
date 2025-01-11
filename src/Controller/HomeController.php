@@ -48,9 +48,9 @@ class HomeController extends AbstractController
      * 
      * @return Response La réponse contenant la vue de la page d'accueil.
      */
+    #[Route("/", name: 'app.home')]
     public function index(Request $request, EntityManagerInterface $entityManager): Response
     {
-        // Vérification si l'utilisateur est connecté
         $user = $this->getUser();
         if (!$user) {
             return $this->redirectToRoute('auth.login');

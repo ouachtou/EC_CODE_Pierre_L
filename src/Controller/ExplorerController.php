@@ -32,6 +32,7 @@ class ExplorerController extends AbstractController
      *
      * @return Response La réponse contenant la vue de la page d'exploration avec les livres lus.
      */
+    #[Route("/explorer", name: 'app_explorer')]
     public function index(): Response
     {
         $booksRead = $this->bookReadRepository->findAll();
