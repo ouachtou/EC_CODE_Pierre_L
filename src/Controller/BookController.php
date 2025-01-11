@@ -42,4 +42,10 @@ class BookController extends AbstractController
 
         return $this->json($bookRead);
     }
+
+    #[Route('/book/update/{id}', name: 'app.book.update', methods: ['PUT'])]
+    public function updateBook(Request $request, EntityManagerInterface $entityManager, int $id): Response
+    {
+        return $this->render('pages/explorer.html.twig');
+    }
 }
