@@ -35,8 +35,9 @@
                             <td>
                                 <div class="flex flex-col gap-2">
                                     <a class="leading-none font-medium text-sm text-gray-900 hover:text-primary"
-                                       href="#">
-                                        {{ bookRead.bookId.name }}
+                                    href="#" data-modal-toggle="#book_modal" 
+                                    onclick="openBookModal('{{ bookRead.bookId.id }}', '{{ bookRead.description|e('js') }}', '{{ bookRead.rating|round }}', '{{ bookRead.isRead ? 'checked' : '' }}', '{{ bookRead.id }}')">
+                                         {{ bookRead.bookId.name }}
                                     </a>
                                     <span class="text-2sm text-gray-700 font-normal leading-3">
                                     {{ bookRead.description|raw }}
@@ -60,3 +61,5 @@
         </div>
     </div>
 </div>
+
+<script src="{{ asset('js/fromBook.js') }}"></script>
